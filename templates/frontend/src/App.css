@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background-color: #f3f6fc;
+  min-height: 100vh;
+}
+
+/* Make sure root div takes full width */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

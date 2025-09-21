@@ -1,0 +1,27 @@
+/* keep it small — Tailwind does the heavy lifting */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* fallback for text-shadow where needed */
+.text-hero-shadow {
+  text-shadow: 0 6px 28px rgba(2, 6, 23, 0.45);
+}
+
+@keyframes bounce-slow {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 6s ease-in-out infinite;
+}

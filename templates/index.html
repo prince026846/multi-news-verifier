@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Multi-Media News Verifier</title>
+<style>
+body { font-family: system-ui, Arial, sans-serif; background:#f7f9fc; margin:0; }
+.wrap { max-width: 820px; margin: 40px auto; background:#fff; padding: 24px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+h1 { margin-top: 0; }
+textarea { width:100%; min-height: 180px; padding:12px; font-size:16px; border-radius:12px; border:1px solid #d8e0ef; }
+.row { display:flex; gap:12px; align-items:center; margin-top:12px; }
+select, button, input[type="file"] { padding:10px 14px; border-radius:10px; border:1px solid #d8e0ef; background:#eef3ff; font-weight:600; }
+button { background:#4f46e5; color:#fff; border:none; cursor:pointer; }
+.card { background:#f1f5ff; padding:16px; border-radius:12px; margin-top:16px; white-space:pre-line; }
+.muted { color:#667085; font-size:14px; }
+.file-section { margin: 16px 0; padding: 16px; background: #f8f9fa; border-radius: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📰 Multi-Media News Verifier</h1>
+  <p class="muted">Paste text or upload an image / audio / video file. We will transcribe/ocr it, then run a small AI to guess Real / Fake / Needs Confirmation. This is an educational demo.</p>
+
+  <form method="POST" enctype="multipart/form-data">
+    <label for="news_text"><b>Paste text (or leave empty if uploading file):</b></label>
+    <textarea id="news_text" name="news_text" placeholder="Type or paste forward messages here...">{{ original_text or '' }}</textarea>
+
+    <div class="file-section">
+      <label for="file_upload"><b>Or upload a file (image/audio/video/pdf/docx):</b></label>
+      <input type="file" id="file_upload" name="file_upload" accept="image/*,audio/*,video/*,.pdf,.docx,.txt" />
+    </div>
+
+    <div class="row">
+      <label for="target_lang">Output language:</label>
+      <select name="target_lang" id="target_lang">
+        <option value="auto" {{ 'selected' if (target_lang or 'auto')=='auto' else '' }}>Auto (same as input)</option>
+        <option value="en" {{ 'selected' if target_lang=='en' else '' }}>English</option>
+        <option value="hi" {{ 'selected' if target_lang=='hi' else '' }}>हिंदी (Hindi)</option>
+        <option value="gu" {{ 'selected' if target_lang=='gu' else '' }}>ગુજરાતી (Gujarati)</option>
+        <option value="bn" {{ 'selected' if target_lang=='bn' else '' }}>বাংলা (Bengali)</option>
+        <option value="mr" {{ 'selected' if target_lang=='mr' else '' }}>मराठी (Marathi)</option>
+        <option value="ta" {{ 'selected' if target_lang=='ta' else '' }}>தமிழ் (Tamil)</option>
+        <option value="te" {{ 'selected' if target_lang=='te' else '' }}>తెలుగు (Telugu)</option>
+        <option value="pa" {{ 'selected' if target_lang=='pa' else '' }}>ਪੰਜਾਬੀ (Punjabi)</option>
+        <option value="kn" {{ 'selected' if target_lang=='kn' else '' }}>ಕನ್ನಡ (Kannada)</option>
+      </select>
+      <button type="submit">Check News</button>
+    </div>
+  </form>
+
+  {% if result %}
+  <div class="card">{{ result }}</div>
+  {% endif %}
+
+  <p class="muted">⚠️ This demo uses enhanced AI models and fact-checking APIs. Results are educational - always verify with official sources.</p>
+</div>
+</body>
+</html>

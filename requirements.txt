@@ -1,0 +1,11 @@
+flask
+scikit-learn
+langdetect
+deep-translator
+pytesseract
+Pillow
+moviepy
+docx2txt
+PyPDF2
+openai-whisper
+joblib
