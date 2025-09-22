@@ -34,7 +34,7 @@ export default function Hero() {
               Verify News Across All Platforms, Instantly.
             </p>
 
-            <div className="mt-8 flex items-center gap-4">
+            {/* <div className="mt-8 flex items-center gap-4">
               <a
                 href="http://127.0.0.1:5000/"
                 className="bg-gradient-to-r from-blue-500 to-green-400 hover:opacity-95 text-white font-semibold px-8 py-3 rounded-full shadow-xl transition-transform transform hover:scale-105 hover:shadow-green-400/40"
@@ -46,6 +46,20 @@ export default function Hero() {
                 Learn how
               </button>
             </div>
+          </div> */}
+            
+            <div className="mt-8 flex items-center gap-4">
+  <a
+    href={import.meta.env.VITE_API_URL || "http://127.0.0.1:5000/"}
+    className="bg-gradient-to-r from-blue-500 to-green-400 hover:opacity-95 text-white font-semibold px-8 py-3 rounded-full shadow-xl transition-transform transform hover:scale-105 hover:shadow-green-400/40"
+  >
+    Start Verifying
+  </a>
+
+  <button className="px-6 py-3 rounded-full border border-white/30 text-white/90 hover:bg-white/10 hover:scale-105 transition-transform">
+    Learn how
+  </button>
+</div>
           </div>
 
           {/* right globe image */}
