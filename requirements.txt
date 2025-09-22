@@ -11,3 +11,5 @@ docx2txt
 PyPDF2
 openai-whisper
 joblib
+SpeechRecognition
+
